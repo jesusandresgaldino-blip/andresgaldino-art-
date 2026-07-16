@@ -264,6 +264,18 @@
     object-position: center 20%;
   }
 
+  .photo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1rem;
+  }
+  .photo-grid img {
+    width: 100%;
+    aspect-ratio: 4/5;
+    object-fit: cover;
+    object-position: center 15%;
+  }
+
   .social {
     display: flex;
     gap: 1rem;
@@ -375,7 +387,9 @@
     <div class="section-head">
       <h2>Fotos</h2>
     </div>
-    <p>Próximamente.</p>
+    <div class="photo-grid">
+      <img src="/assets/fotos-1.jpg" alt="Andrés Galdino, Anndy — editorial" loading="lazy">
+    </div>
   </section>
 
   <section id="redes">
