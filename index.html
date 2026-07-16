@@ -267,13 +267,22 @@
     box-shadow: 0 20px 45px -20px rgba(0,0,0,0.18);
   }
 
-  /* Merch — fusionado con el fondo */
-  .merch-stage {
+  /* Merch — editorial grande */
+  .merch-editorial {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    margin-bottom: 3rem;
+  }
+  .merch-visual {
     position: relative;
-    min-height: 62vh;
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+  .merch-visual--main {
+    min-height: 640px;
   }
   .merch-word {
     position: absolute;
@@ -282,9 +291,9 @@
     transform: translate(-50%, -50%);
     font-family: "Jost", sans-serif;
     font-weight: 200;
-    font-size: clamp(3.5rem, 14vw, 10rem);
+    font-size: clamp(4rem, 11vw, 8rem);
     letter-spacing: 0.05em;
-    color: rgba(17,17,17,0.05);
+    color: rgba(17,17,17,0.06);
     white-space: nowrap;
     z-index: 0;
     pointer-events: none;
@@ -292,25 +301,33 @@
   .merch-img {
     position: relative;
     z-index: 1;
+    max-width: 100%;
+    max-height: 640px;
+    width: auto;
+    object-fit: contain;
     mix-blend-mode: multiply;
-    filter: drop-shadow(0 25px 35px rgba(0,0,0,0.12));
+    filter: drop-shadow(0 30px 40px rgba(0,0,0,0.14));
   }
-  .merch-img--1 {
-    width: 42%;
-    max-width: 340px;
-    margin-right: -3%;
-    transform: rotate(-2deg);
+  .merch-copy { max-width: 34ch; }
+  .merch-copy h3 {
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    font-weight: 300;
+    letter-spacing: -0.01em;
+    margin: 0.3rem 0 1rem;
   }
-  .merch-img--2 {
-    width: 30%;
-    max-width: 250px;
-    margin-top: 8%;
-    transform: rotate(3deg);
-  }
+  .merch-copy p { color: var(--muted); font-size: 0.95rem; }
 
-  @media (max-width: 700px) {
-    .merch-stage { min-height: 48vh; flex-direction: column; gap: 1.5rem; }
-    .merch-img--1, .merch-img--2 { width: 62%; max-width: 280px; margin: 0; transform: none; }
+  .merch-visual--full {
+    min-height: 480px;
+  }
+  .merch-visual--full .merch-img { max-height: 480px; }
+
+  @media (max-width: 800px) {
+    .merch-editorial { grid-template-columns: 1fr; }
+    .merch-visual--main { min-height: 420px; }
+    .merch-visual--main .merch-img { max-height: 420px; }
+    .merch-visual--full { min-height: 340px; }
+    .merch-visual--full .merch-img { max-height: 340px; }
   }
 
   /* Música */
@@ -528,10 +545,21 @@
       <h2>Merch</h2>
       <span class="eyebrow">Próximamente</span>
     </div>
-    <div class="merch-stage">
-      <span class="merch-word">ANNDDY</span>
-      <img class="merch-img merch-img--1" src="/assets/merch-1.jpg" alt="Hoodie ANNDDY blanco y negro" loading="lazy">
-      <img class="merch-img merch-img--2" src="/assets/merch-2.jpg" alt="Hoodies ANNDDY en varios colores" loading="lazy">
+
+    <div class="merch-editorial">
+      <div class="merch-visual merch-visual--main">
+        <span class="merch-word">ANNDDY</span>
+        <img class="merch-img" src="/assets/merch-1.jpg" alt="Hoodie ANNDDY blanco y negro" loading="lazy">
+      </div>
+      <div class="merch-copy">
+        <span class="mini-label">Drop 01</span>
+        <h3>Hoodies ANNDDY</h3>
+        <p>Streetwear con la identidad del proyecto. Piezas en blanco, negro y escala de grises — edición limitada, próximamente disponible.</p>
+      </div>
+    </div>
+
+    <div class="merch-visual merch-visual--full">
+      <img class="merch-img" src="/assets/merch-2.jpg" alt="Hoodies ANNDDY en varios colores" loading="lazy">
     </div>
   </section>
 
