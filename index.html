@@ -245,20 +245,62 @@
     align-items: center;
   }
 
-  .wide-banner {
-    width: 100vw;
-    position: relative;
-    left: 50%;
-    right: 50%;
-    margin-left: -50vw;
-    margin-right: -50vw;
+  .promo-wrap {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
   }
-  .wide-banner img {
-    width: 100%;
-    height: clamp(240px, 42vw, 460px);
+  .promo-title {
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    font-weight: 500;
+    margin: 0 0 1.5rem;
+    letter-spacing: -0.01em;
+  }
+  .promo-card {
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+    background: #d9d9d6;
+    display: flex;
+    align-items: center;
+    min-height: 300px;
+  }
+  .promo-text {
+    position: relative;
+    z-index: 1;
+    padding: 0 3rem;
+    width: 42%;
+  }
+  .promo-text p {
+    color: var(--fg);
+    font-size: 1.05rem;
+    font-weight: 400;
+    margin: 0 0 1.25rem;
+    max-width: 18ch;
+  }
+  .promo-btn {
+    display: inline-block;
+    background: #111;
+    color: #fff;
+    text-decoration: none;
+    padding: 0.7rem 1.5rem;
+    border-radius: 999px;
+    font-size: 0.85rem;
+  }
+  .promo-btn:hover { background: var(--accent); }
+  .promo-card img {
+    width: 58%;
+    height: 100%;
+    min-height: 300px;
     object-fit: cover;
-    object-position: center 25%;
-    display: block;
+    object-position: center 20%;
+  }
+
+  @media (max-width: 700px) {
+    .promo-card { flex-direction: column-reverse; min-height: auto; }
+    .promo-text { width: 100%; padding: 2rem; text-align: center; }
+    .promo-text p { max-width: none; }
+    .promo-card img { width: 100%; height: 260px; }
   }
   .bio-block img {
     width: 100%;
@@ -458,8 +500,15 @@
     </div>
   </section>
 
-  <div class="wide-banner">
-    <img src="/assets/banner-1.jpg" alt="Andrés Galdino, Anndy" loading="lazy">
+  <div class="promo-wrap">
+    <h3 class="promo-title">Conoce mi otro lado</h3>
+    <div class="promo-card">
+      <div class="promo-text">
+        <p>Sobre Product &amp; Creative Design.</p>
+        <a class="promo-btn" href="https://andresgaldino.com" target="_blank" rel="noopener">Visitar</a>
+      </div>
+      <img src="/assets/banner-1.jpg" alt="Andrés Galdino, Anndy" loading="lazy">
+    </div>
   </div>
 
   <section id="musica">
