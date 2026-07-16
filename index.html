@@ -527,6 +527,13 @@
     transform: translateY(-8px) scale(1.015);
     box-shadow: 0 30px 55px -20px rgba(0,0,0,0.3);
   }
+  .maquillaje-note {
+    text-align: center;
+    max-width: 46ch;
+    margin: 2.5rem auto 0;
+    font-style: italic;
+    color: var(--muted);
+  }
 
   @media (max-width: 700px) {
     .gallery-grid { grid-template-columns: 1fr; }
@@ -925,8 +932,14 @@
   <section id="maquillaje">
     <div class="section-head">
       <h2>Maquillaje</h2>
+      <span class="eyebrow">Editorial</span>
     </div>
-    <p>Próximamente.</p>
+    <div class="gallery-grid lightbox-group">
+      <img src="/assets/maquillaje-1.jpg" alt="Andrés Galdino, Anndy — maquillaje editorial" loading="lazy">
+      <img src="/assets/maquillaje-2.jpg" alt="Andrés Galdino, Anndy — maquillaje editorial" loading="lazy">
+      <img src="/assets/maquillaje-3.jpg" alt="Andrés Galdino, Anndy — maquillaje editorial" loading="lazy">
+    </div>
+    <p class="maquillaje-note">Para mí el maquillaje es una forma de arte: una manera de transformar el rostro en lienzo y contar algo distinto cada vez.</p>
   </section>
 
   <section id="fotos">
