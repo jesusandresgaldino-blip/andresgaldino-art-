@@ -154,6 +154,31 @@
     text-transform: uppercase;
     transition: color 0.2s ease;
   }
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 32px;
+    height: 32px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+  .nav-toggle span {
+    display: block;
+    height: 1.5px;
+    background: var(--fg);
+    border-radius: 2px;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+  }
+  .nav-toggle span:nth-child(1) { width: 22px; }
+  .nav-toggle span:nth-child(2) { width: 16px; align-self: flex-end; }
+  .nav-toggle span:nth-child(3) { width: 22px; }
+  .nav-toggle.active span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); width: 22px; }
+  .nav-toggle.active span:nth-child(2) { opacity: 0; }
+  .nav-toggle.active span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); width: 22px; }
 
   /* Hero — estilo Next.js starter */
   .next-hero {
@@ -712,18 +737,28 @@
   }
 
   @media (max-width: 800px) {
-    .topbar { padding: 1.25rem 1.5rem; flex-wrap: wrap; gap: 1rem; }
+    .topbar { padding: 1.25rem 1.5rem; }
+    .nav-toggle { display: flex; }
     .topbar nav {
-      width: 100%;
-      flex-wrap: nowrap;
-      overflow-x: auto;
-      gap: 1.5rem;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: none;
-      padding-bottom: 0.25rem;
+      position: fixed;
+      inset: 0;
+      z-index: 50;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
+      background: var(--bg);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-8px);
+      transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
     }
-    .topbar nav::-webkit-scrollbar { display: none; }
-    .topbar nav a { white-space: nowrap; flex-shrink: 0; }
+    .topbar nav.active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    .topbar nav a { font-size: 1rem; letter-spacing: 0.12em; }
     .hero-links { grid-template-columns: 1fr 1fr; }
     .bio-block { grid-template-columns: 1fr; gap: 2rem; }
     section { padding: 4rem 0; }
@@ -752,7 +787,7 @@
     <span>Andrés Galdino</span>
     <img class="verify" src="/assets/icon/verify.svg" alt="Verificado">
   </a>
-  <nav>
+  <nav id="siteNav">
     <a href="#bio">Bio</a>
     <a href="#musica">Música</a>
     <a href="#modelaje">Modelaje</a>
@@ -760,6 +795,9 @@
     <a href="#fotos">Galería personal</a>
     <a href="#merch">Merch</a>
   </nav>
+  <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
 </div>
 
 <section class="next-hero">
@@ -1004,6 +1042,26 @@
   <p class="footer-note">Andrés Galdino · Anndy · Colombia</p>
 </footer>
 <script>
+  (function () {
+    var navToggle = document.getElementById('navToggle');
+    var nav = document.getElementById('siteNav');
+    if (navToggle && nav) {
+      navToggle.addEventListener('click', function () {
+        var isOpen = nav.classList.toggle('active');
+        navToggle.classList.toggle('active', isOpen);
+        navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        document.body.style.overflow = isOpen ? 'hidden' : '';
+      });
+      nav.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', function () {
+          nav.classList.remove('active');
+          navToggle.classList.remove('active');
+          navToggle.setAttribute('aria-expanded', 'false');
+          document.body.style.overflow = '';
+        });
+      });
+    }
+  })();
   (function () {
     var lightbox = document.getElementById('lightbox');
     var lightboxImg = document.getElementById('lightboxImg');
