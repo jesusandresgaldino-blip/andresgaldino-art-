@@ -466,6 +466,54 @@
     max-width: 760px;
     margin: 0 auto;
   }
+
+  .modelaje-row {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+  .modelaje-row + .modelaje-row { margin-top: 4rem; }
+  .modelaje-row--reverse { grid-template-columns: 1fr 1.2fr; }
+  .modelaje-row--reverse .modelaje-photo { order: 2; }
+  .modelaje-row--reverse .modelaje-caption { order: 1; }
+  .modelaje-photo {
+    width: 100%;
+    aspect-ratio: 4/5;
+    object-fit: cover;
+    object-position: center 15%;
+    border-radius: 22px;
+    box-shadow: 0 25px 55px -22px rgba(0,0,0,0.25);
+    cursor: zoom-in;
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease;
+  }
+  .modelaje-photo:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 35px 65px -22px rgba(0,0,0,0.35);
+  }
+  .modelaje-caption h3 {
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin: 0.4rem 0 1rem;
+    letter-spacing: -0.01em;
+  }
+  .modelaje-caption p {
+    color: var(--muted);
+    font-size: 0.92rem;
+    line-height: 1.7;
+    max-width: 32ch;
+  }
+
+  @media (max-width: 800px) {
+    .modelaje-row, .modelaje-row--reverse {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    .modelaje-row--reverse .modelaje-photo,
+    .modelaje-row--reverse .modelaje-caption {
+      order: initial;
+    }
+  }
   .gallery-grid img {
     width: 100%;
     aspect-ratio: 4/5;
@@ -851,9 +899,22 @@
       <h2>Modelaje</h2>
       <span class="eyebrow">Editorial</span>
     </div>
-    <div class="gallery-grid gallery-grid--two lightbox-group">
-      <img src="/assets/modelaje-1.jpg" alt="Andrés Galdino, Anndy — editorial floral" loading="lazy">
-      <img src="/assets/modelaje-2.jpg" alt="Andrés Galdino, Anndy — editorial floral" loading="lazy">
+    <div class="modelaje-row lightbox-group">
+      <img class="modelaje-photo" src="/assets/modelaje-1.jpg" alt="Andrés Galdino, Anndy — editorial floral" loading="lazy">
+      <div class="modelaje-caption">
+        <span class="mini-label">Editorial</span>
+        <h3>Fashion Week</h3>
+        <p>Fotografiado en Fashion Week, by Moda Week International — un set floral explorando texturas y color sobre luz de estudio.</p>
+      </div>
+    </div>
+
+    <div class="modelaje-row modelaje-row--reverse lightbox-group">
+      <img class="modelaje-photo" src="/assets/modelaje-2.jpg" alt="Andrés Galdino, Anndy — editorial floral" loading="lazy">
+      <div class="modelaje-caption">
+        <span class="mini-label">Editorial</span>
+        <h3>Fashion Week</h3>
+        <p>Segunda toma del mismo set — Fashion Week, by Moda Week International.</p>
+      </div>
     </div>
   </section>
 
