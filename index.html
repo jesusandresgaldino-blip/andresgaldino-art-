@@ -111,21 +111,13 @@
     top: 0;
     left: 0;
     right: 0;
-    height: calc(env(safe-area-inset-top, 0px) + 110px);
+    height: calc(env(safe-area-inset-top, 0px) + 90px);
     z-index: 15;
     pointer-events: none;
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
   }
-  .top-fade span {
-    position: absolute;
-    inset: 0;
-    -webkit-backdrop-filter: blur(var(--b));
-    backdrop-filter: blur(var(--b));
-    -webkit-mask-image: linear-gradient(to bottom, #000, transparent);
-    mask-image: linear-gradient(to bottom, #000, transparent);
-  }
-  .top-fade span:nth-child(1) { --b: 16px; bottom: 65%; }
-  .top-fade span:nth-child(2) { --b: 10px; bottom: 40%; }
-  .top-fade span:nth-child(3) { --b: 5px; bottom: 15%; }
+  .top-fade span { display: none; }
 
   /* Topbar */
   .topbar {
