@@ -110,14 +110,30 @@
 
   /* Topbar */
   .topbar {
-    position: relative;
-    z-index: 10;
+    position: sticky;
+    top: 0;
+    z-index: 20;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 2rem;
     max-width: 1040px;
     margin: 0 auto;
+    transition: padding 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+  }
+  .topbar.scrolled {
+    padding: 0.9rem 2rem;
+    background: rgba(253,253,252,0.82);
+    backdrop-filter: blur(12px) saturate(140%);
+    -webkit-backdrop-filter: blur(12px) saturate(140%);
+    box-shadow: 0 1px 0 var(--line);
+  }
+  .topbar.scrolled .brand img:first-child {
+    width: 22px;
+    height: 22px;
+  }
+  .topbar.scrolled .brand span {
+    font-size: 0.8rem;
   }
   .topbar .brand {
     display: flex;
@@ -136,6 +152,7 @@
     height: 28px;
     border-radius: 50%;
     object-fit: cover;
+    transition: width 0.3s ease, height 0.3s ease;
   }
   .topbar .brand .verify {
     width: 15px;
@@ -1042,6 +1059,15 @@
   <p class="footer-note">Andrés Galdino · Anndy · Colombia</p>
 </footer>
 <script>
+  (function () {
+    var topbar = document.querySelector('.topbar');
+    if (!topbar) return;
+    function onScroll() {
+      topbar.classList.toggle('scrolled', window.scrollY > 40);
+    }
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+  })();
   (function () {
     var navToggle = document.getElementById('navToggle');
     var nav = document.getElementById('siteNav');
