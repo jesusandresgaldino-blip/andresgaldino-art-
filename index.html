@@ -108,6 +108,20 @@
     padding: 0 2rem;
   }
 
+  .top-fade {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 130px;
+    z-index: 15;
+    pointer-events: none;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 30%, transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 0%, #000 30%, transparent 100%);
+  }
+
   /* Topbar */
   .topbar {
     position: sticky;
@@ -794,6 +808,7 @@
 </style>
 </head>
 <body>
+<div class="top-fade"></div>
 <div class="topbar">
   <a class="brand" href="/">
     <img src="/assets/avatar.jpg" alt="Andrés Galdino">
