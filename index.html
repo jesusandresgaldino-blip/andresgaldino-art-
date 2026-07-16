@@ -267,6 +267,65 @@
     box-shadow: 0 20px 45px -20px rgba(0,0,0,0.18);
   }
 
+  /* Música */
+  .mini-label {
+    display: block;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1rem;
+  }
+  .music-top {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 3rem;
+    margin-bottom: 3.5rem;
+  }
+  .latest-release .cover-ph { width: 100%; margin-bottom: 1rem; }
+  .latest-info { display: flex; flex-direction: column; gap: 0.2rem; }
+  .latest-info strong { font-weight: 500; font-size: 0.95rem; }
+  .latest-info span { color: var(--muted); font-size: 0.8rem; }
+
+  .track-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 0 2rem; }
+  .track-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    padding: 0.7rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .track-list .cover-ph { width: 44px; height: 44px; border-radius: 8px; flex-shrink: 0; }
+  .track-list strong { display: block; font-weight: 400; font-size: 0.85rem; }
+  .track-list span { color: var(--muted); font-size: 0.72rem; }
+
+  .singles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1.5rem;
+  }
+  .single-item { display: flex; flex-direction: column; gap: 0.4rem; }
+  .single-item .cover-ph { width: 100%; aspect-ratio: 1/1; margin-bottom: 0.3rem; }
+  .single-item strong { font-weight: 400; font-size: 0.8rem; }
+  .single-item span { color: var(--muted); font-size: 0.72rem; }
+
+  .cover-ph {
+    border-radius: 12px;
+    box-shadow: 0 12px 30px -16px rgba(0,0,0,0.25);
+    background-size: cover;
+    background-position: center;
+  }
+  .cover-echo { background: linear-gradient(135deg, #b9b9c2, #7d7d86); }
+  .cover-pulso { background: linear-gradient(135deg, #2b1f3d, #0d0d14); }
+  .cover-ethernall { background: linear-gradient(135deg, #241a3d, #05050a); }
+  .cover-yourspace { background: linear-gradient(135deg, #d8c9c0, #8a736a); }
+  .cover-comienzos { background: linear-gradient(135deg, #cfe0f7, #8fb3e0); }
+
+  @media (max-width: 700px) {
+    .music-top { grid-template-columns: 1fr; }
+    .track-list { grid-template-columns: 1fr; }
+  }
+
   .social {
     display: flex;
     gap: 2rem;
@@ -344,7 +403,60 @@
       <h2>Música</h2>
       <span class="eyebrow">2021 — hoy</span>
     </div>
-    <p>Próximamente.</p>
+
+    <div class="music-top">
+      <div class="latest-release">
+        <span class="mini-label">Último lanzamiento</span>
+        <div class="cover-ph cover-echo" style="aspect-ratio:1/1;border-radius:14px;"></div>
+        <div class="latest-info">
+          <strong>Echo Garden</strong>
+          <span>Single · 2025 · 1 canción</span>
+        </div>
+      </div>
+
+      <div class="top-tracks">
+        <span class="mini-label">Top canciones</span>
+        <ul class="track-list">
+          <li><div class="cover-ph cover-echo"></div><div><strong>Echo Garden</strong><span>Echo Garden · Single · 2025</span></div></li>
+          <li><div class="cover-ph cover-pulso"></div><div><strong>Pulso Nocturno</strong><span>Pulso Nocturno · Single · 2025</span></div></li>
+          <li><div class="cover-ph cover-ethernall"></div><div><strong>Modern Stellar</strong><span>Ethernall · Single · 2023</span></div></li>
+          <li><div class="cover-ph cover-ethernall"></div><div><strong>On Earth</strong><span>Ethernall · Single · 2023</span></div></li>
+          <li><div class="cover-ph cover-yourspace"></div><div><strong>Your Space</strong><span>Your Space · Single · 2021</span></div></li>
+          <li><div class="cover-ph cover-comienzos"></div><div><strong>Comienzos</strong><span>Comienzos · Single · 2021</span></div></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="singles-block">
+      <span class="mini-label">Sencillos y EP</span>
+      <div class="singles-grid">
+        <div class="single-item">
+          <div class="cover-ph cover-echo"></div>
+          <strong>Echo Garden — Single</strong>
+          <span>2025</span>
+        </div>
+        <div class="single-item">
+          <div class="cover-ph cover-pulso"></div>
+          <strong>Pulso Nocturno — Single</strong>
+          <span>2025</span>
+        </div>
+        <div class="single-item">
+          <div class="cover-ph cover-ethernall"></div>
+          <strong>Ethernall — Single</strong>
+          <span>2023</span>
+        </div>
+        <div class="single-item">
+          <div class="cover-ph cover-yourspace"></div>
+          <strong>Your Space — Single</strong>
+          <span>2021</span>
+        </div>
+        <div class="single-item">
+          <div class="cover-ph cover-comienzos"></div>
+          <strong>Comienzos — Single</strong>
+          <span>2021</span>
+        </div>
+      </div>
+    </div>
   </section>
 
   <section id="modelaje">
