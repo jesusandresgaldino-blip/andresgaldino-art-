@@ -166,10 +166,22 @@
   }
   .credit strong { color: var(--fg); font-weight: 500; }
   .hero-center {
+    position: relative;
     flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+  .hero-signature {
+    position: absolute;
+    left: 2rem;
+    bottom: 1rem;
+    width: clamp(90px, 10vw, 140px);
+    height: auto;
+    opacity: 0.85;
+  }
+  @media (max-width: 800px) {
+    .hero-signature { left: 1.25rem; bottom: -1rem; width: 80px; }
   }
   .hero-center h1 {
     font-family: "Jost", sans-serif;
@@ -492,6 +504,7 @@
 <section class="next-hero">
   <div class="hero-center">
     <h1>ANNDY</h1>
+    <img class="hero-signature" src="/assets/firma.png" alt="Firma Anndy">
   </div>
   <div class="hero-links wrap">
     <a href="#musica"><strong>Música →</strong><span>Sencillos y proyectos desde 2021.</span></a>
