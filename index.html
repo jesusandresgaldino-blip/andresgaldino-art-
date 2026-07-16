@@ -152,6 +152,7 @@
     font-size: 0.68rem;
     letter-spacing: 0.18em;
     text-transform: uppercase;
+    transition: color 0.2s ease;
   }
   .topbar nav a:hover { color: var(--accent); }
 
@@ -219,11 +220,28 @@
     display: flex;
     flex-direction: column;
     gap: 0.35rem;
+    transition: transform 0.25s ease;
+  }
+  .hero-links a:hover {
+    transform: translateY(-3px);
   }
   .hero-links a strong {
     font-weight: 500;
     font-size: 0.95rem;
+    position: relative;
+    transition: color 0.2s ease;
   }
+  .hero-links a strong::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 0;
+    height: 1px;
+    background: var(--accent);
+    transition: width 0.3s ease;
+  }
+  .hero-links a:hover strong::after { width: 100%; }
   .hero-links a span {
     color: var(--muted);
     font-size: 0.8rem;
@@ -305,6 +323,39 @@
     max-width: 60ch;
     font-size: 0.98rem;
     font-weight: 300;
+  }
+
+  .bio-section {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .bio-head {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+  }
+  .bio-quote {
+    font-family: Georgia, serif;
+    font-size: 4.5rem;
+    line-height: 1;
+    color: var(--accent);
+    opacity: 0.35;
+    margin-top: 0.5rem;
+  }
+  .bio-text {
+    max-width: 62ch;
+    font-size: 1.15rem;
+    line-height: 1.85;
+    margin-top: -0.5rem;
+  }
+  .bio-lead {
+    font-family: "Jost", sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    color: var(--fg);
+    font-size: 1.05em;
   }
 
   .bio-block {
@@ -413,6 +464,11 @@
     object-position: center 15%;
     border-radius: 20px;
     box-shadow: 0 20px 45px -20px rgba(0,0,0,0.18);
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease;
+  }
+  .photo-grid img:hover {
+    transform: translateY(-8px) scale(1.015);
+    box-shadow: 0 30px 55px -20px rgba(0,0,0,0.3);
   }
 
   /* Merch — editorial grande */
@@ -442,6 +498,11 @@
     mix-blend-mode: multiply;
     border-radius: 20px;
     filter: drop-shadow(0 30px 40px rgba(0,0,0,0.14));
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), filter 0.4s ease;
+  }
+  .merch-img:hover {
+    transform: translateY(-6px);
+    filter: drop-shadow(0 40px 50px rgba(0,0,0,0.2));
   }
   .merch-copy { max-width: 34ch; }
   .merch-copy h3 {
@@ -512,6 +573,19 @@
     border-radius: 12px;
     box-shadow: 0 12px 30px -16px rgba(0,0,0,0.25);
     object-fit: cover;
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease;
+  }
+  .track-list li:hover .cover-ph,
+  .single-item:hover .cover-ph,
+  .latest-release:hover .cover-ph {
+    transform: translateY(-4px) scale(1.04);
+    box-shadow: 0 18px 34px -14px rgba(0,0,0,0.35);
+  }
+  .track-list li {
+    transition: transform 0.2s ease;
+  }
+  .track-list li:hover {
+    transform: translateX(3px);
   }
 
   @media (max-width: 700px) {
@@ -584,12 +658,13 @@
 </section>
 
 <main>
-  <section id="bio">
-    <div class="section-head" style="display:block;">
+  <section id="bio" class="bio-section">
+    <div class="section-head bio-head">
       <span class="eyebrow">Sobre mí</span>
       <h2>Biografía</h2>
     </div>
-    <p>Andrés Galdino es un artista colombiano multidisciplinario que se mueve entre la música, el modelaje y la dirección audiovisual. Comenzó su carrera musical en 2021, lanzando sencillos como <em>Modern Stellar</em> y <em>Ethernall</em>, y ha sido reconocido como artista verificado en Spotify, Apple Music y YouTube. Como director y actor, creó <em>Femboy Cambio Extremo</em> (2021). Su trabajo se mueve entre estéticas contemporáneas y una identidad visual propia, con presencia activa en redes sociales donde comparte tanto su arte como su vida.</p>
+    <span class="bio-quote">&#8220;</span>
+    <p class="bio-text"><span class="bio-lead">Andrés Galdino</span> es un artista colombiano multidisciplinario que se mueve entre la música, el modelaje y la dirección audiovisual. Comenzó su carrera musical en 2021, lanzando sencillos como <em>Modern Stellar</em> y <em>Ethernall</em>, y ha sido reconocido como artista verificado en Spotify, Apple Music y YouTube. Como director y actor, creó <em>Femboy Cambio Extremo</em> (2021). Su trabajo se mueve entre estéticas contemporáneas y una identidad visual propia, con presencia activa en redes sociales donde comparte tanto su arte como su vida.</p>
   </section>
 
   <div class="promo-wrap">
