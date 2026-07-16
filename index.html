@@ -182,6 +182,41 @@
     transition: color 0.2s ease;
   }
 
+  .mobile-line-nav { display: none; }
+  @media (max-width: 800px) {
+    .mobile-line-nav {
+      display: flex;
+      flex-direction: column;
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 0.25rem 1.5rem 1.5rem;
+    }
+    .mobile-line-nav a {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.9rem 0;
+      border-bottom: 1px solid var(--line);
+      text-decoration: none;
+      color: var(--fg);
+    }
+    .mobile-line-nav a:last-child { border-bottom: none; }
+    .mln-index {
+      font-size: 0.68rem;
+      letter-spacing: 0.05em;
+      color: var(--muted);
+      flex-shrink: 0;
+    }
+    .mln-text {
+      font-size: 1rem;
+      font-weight: 400;
+    }
+    .mobile-line-nav a:active .mln-index,
+    .mobile-line-nav a:active .mln-text {
+      color: var(--accent);
+    }
+  }
+
   /* Hero — estilo Next.js starter */
   .next-hero {
     display: flex;
@@ -779,6 +814,15 @@
     <a href="#merch">Merch</a>
   </nav>
 </div>
+
+<nav class="mobile-line-nav" aria-label="Navegación">
+  <a href="#bio"><span class="mln-index">01</span><span class="mln-text">Bio</span></a>
+  <a href="#musica"><span class="mln-index">02</span><span class="mln-text">Música</span></a>
+  <a href="#modelaje"><span class="mln-index">03</span><span class="mln-text">Modelaje</span></a>
+  <a href="#maquillaje"><span class="mln-index">04</span><span class="mln-text">Maquillaje</span></a>
+  <a href="#fotos"><span class="mln-index">05</span><span class="mln-text">Galería personal</span></a>
+  <a href="#merch"><span class="mln-index">06</span><span class="mln-text">Merch</span></a>
+</nav>
 
 <section class="next-hero">
   <div class="hero-center">
