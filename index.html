@@ -182,17 +182,18 @@
     position: relative;
     flex: 1;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
   }
   .hero-signature {
-    width: clamp(70px, 8vw, 110px);
+    width: clamp(180px, 20vw, 320px);
     height: auto;
-    opacity: 0.85;
-    margin-left: 0.5rem;
+    opacity: 0.9;
+    margin-left: 1rem;
   }
   @media (max-width: 800px) {
-    .hero-signature { width: 60px; }
+    .hero-signature { width: 150px; margin-left: 0; margin-top: 0.5rem; }
   }
   .hero-center h1 {
     font-family: "Jost", sans-serif;
