@@ -611,6 +611,39 @@
     .track-list { grid-template-columns: 1fr; }
   }
 
+  /* Lightbox */
+  .lightbox-group img { cursor: zoom-in; }
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background: rgba(20,20,18,0.55);
+    backdrop-filter: blur(18px) saturate(120%);
+    -webkit-backdrop-filter: blur(18px) saturate(120%);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+  .lightbox.active {
+    opacity: 1;
+    visibility: visible;
+  }
+  .lightbox img {
+    max-width: min(90vw, 900px);
+    max-height: 88vh;
+    width: auto;
+    border-radius: 16px;
+    box-shadow: 0 40px 80px -20px rgba(0,0,0,0.5);
+    transform: scale(0.96);
+    transition: transform 0.3s ease;
+    cursor: default;
+  }
+  .lightbox.active img { transform: scale(1); }
+
   footer {
     padding: 3.5rem 2rem;
     text-align: center;
@@ -818,11 +851,15 @@
       <h2>Modelaje</h2>
       <span class="eyebrow">Editorial</span>
     </div>
-    <div class="gallery-grid gallery-grid--two">
+    <div class="gallery-grid gallery-grid--two lightbox-group">
       <img src="/assets/modelaje-1.jpg" alt="Andrés Galdino, Anndy — editorial floral" loading="lazy">
       <img src="/assets/modelaje-2.jpg" alt="Andrés Galdino, Anndy — editorial floral, blanco y negro" loading="lazy">
     </div>
   </section>
+
+  <div class="lightbox" id="lightbox">
+    <img id="lightboxImg" src="" alt="">
+  </div>
 
   <section id="videos">
     <div class="section-head">
@@ -881,5 +918,35 @@
   </div>
   <p class="footer-note">Andrés Galdino · Anndy · Colombia</p>
 </footer>
+<script>
+  (function () {
+    var lightbox = document.getElementById('lightbox');
+    var lightboxImg = document.getElementById('lightboxImg');
+    if (!lightbox || !lightboxImg) return;
+    var groupImages = document.querySelectorAll('.lightbox-group img');
+
+    groupImages.forEach(function (img) {
+      img.addEventListener('click', function () {
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    function closeLightbox() {
+      lightbox.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    lightbox.addEventListener('click', function (e) {
+      if (e.target === lightbox) closeLightbox();
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeLightbox();
+    });
+  })();
+</script>
 </body>
 </html>
