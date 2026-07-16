@@ -93,7 +93,11 @@
   body {
     margin: 0;
     font-family: "General Sans", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
-    background: var(--bg);
+    background:
+      radial-gradient(700px circle at 50% 32%, rgba(200,190,255,0.22), transparent 60%),
+      radial-gradient(600px circle at 80% 10%, rgba(255,210,190,0.16), transparent 55%),
+      linear-gradient(180deg, #e9e9ec 0%, #f4f4f2 35%, var(--bg) 100%);
+    background-attachment: fixed;
     color: var(--fg);
     line-height: 1.7;
     font-weight: 300;
