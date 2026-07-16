@@ -108,31 +108,18 @@
 
   /* Topbar */
   .topbar {
-    position: fixed;
+    position: sticky;
     top: 0;
-    left: 0;
-    width: 100%;
     z-index: 20;
-    margin: 0;
-    padding: 0;
-    padding-top: env(safe-area-inset-top, 0px);
-    background: rgba(253,253,252,0.72);
-    -webkit-backdrop-filter: blur(15px);
-    backdrop-filter: blur(15px);
-    transition: padding 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
-  }
-  .topbar-inner {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: 2rem;
     max-width: 1040px;
     margin: 0 auto;
-    padding: 2rem;
+    transition: padding 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
   }
-  .topbar-spacer {
-    height: calc(env(safe-area-inset-top, 0px) + 84px);
-  }
-  .topbar.scrolled .topbar-inner {
+  .topbar.scrolled {
     padding: 0.9rem 2rem;
   }
   .topbar.scrolled .brand img:first-child {
@@ -777,8 +764,7 @@
   }
 
   @media (max-width: 800px) {
-    .topbar-inner { padding: 1.25rem 1.5rem; }
-    .topbar-spacer { height: calc(env(safe-area-inset-top, 0px) + 64px); }
+    .topbar { position: static; padding: 1.25rem 1.5rem; }
     .topbar nav { display: none; }
     .hero-links { grid-template-columns: 1fr 1fr; text-align: center; }
     .hero-links a { align-items: center; }
@@ -805,23 +791,20 @@
 </head>
 <body>
 <div class="topbar">
-  <div class="topbar-inner">
-    <a class="brand" href="/">
-      <img src="/assets/avatar.jpg" alt="Andrés Galdino">
-      <span>Andrés Galdino</span>
-      <img class="verify" src="/assets/icon/verify.svg" alt="Verificado">
-    </a>
-    <nav id="siteNav">
-      <a href="#bio">Bio</a>
-      <a href="#musica">Música</a>
-      <a href="#modelaje">Modelaje</a>
-      <a href="#maquillaje">Maquillaje</a>
-      <a href="#fotos">Galería personal</a>
-      <a href="#merch">Merch</a>
-    </nav>
-  </div>
+  <a class="brand" href="/">
+    <img src="/assets/avatar.jpg" alt="Andrés Galdino">
+    <span>Andrés Galdino</span>
+    <img class="verify" src="/assets/icon/verify.svg" alt="Verificado">
+  </a>
+  <nav id="siteNav">
+    <a href="#bio">Bio</a>
+    <a href="#musica">Música</a>
+    <a href="#modelaje">Modelaje</a>
+    <a href="#maquillaje">Maquillaje</a>
+    <a href="#fotos">Galería personal</a>
+    <a href="#merch">Merch</a>
+  </nav>
 </div>
-<div class="topbar-spacer"></div>
 
 <section class="next-hero">
   <div class="hero-center">
