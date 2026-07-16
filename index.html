@@ -454,7 +454,7 @@
 
   .gallery-grid {
     display: grid;
-    grid-template-columns: 1.1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     gap: 1.75rem;
     align-items: end;
   }
@@ -478,10 +478,14 @@
     object-position: center 20%;
     margin-bottom: 4%;
   }
+  .gallery-offset {
+    object-position: center 20%;
+    margin-bottom: 12%;
+  }
 
   @media (max-width: 700px) {
     .gallery-grid { grid-template-columns: 1fr; }
-    .gallery-wide { margin-bottom: 0; }
+    .gallery-wide, .gallery-offset { margin-bottom: 0; }
   }
 
   /* Merch — editorial grande */
@@ -835,6 +839,7 @@
     <div class="gallery-grid">
       <img class="gallery-tall" src="/assets/og-image.jpg" alt="Andrés Galdino, Anndy — editorial" loading="lazy">
       <img class="gallery-wide" src="/assets/fotos-1.jpg" alt="Andrés Galdino, Anndy — editorial" loading="lazy">
+      <img class="gallery-tall gallery-offset" src="/assets/fotos-2.jpg" alt="Andrés Galdino, Anndy — tocando guitarra" loading="lazy">
     </div>
   </section>
 
