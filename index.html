@@ -452,27 +452,56 @@
     box-shadow: 0 20px 45px -20px rgba(0,0,0,0.18);
   }
 
-  .gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+  .gallery-carousel { }
+  .gallery-track {
+    display: flex;
     gap: 1.5rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 0.25rem;
   }
-  .gallery-grid img {
+  .gallery-track::-webkit-scrollbar { display: none; }
+  .gallery-track img {
+    flex: 0 0 78%;
+    scroll-snap-align: center;
+    max-height: 72vh;
     width: 100%;
     aspect-ratio: 4/5;
     object-fit: cover;
     object-position: center 18%;
-    border-radius: 20px;
-    box-shadow: 0 20px 45px -20px rgba(0,0,0,0.18);
+    border-radius: 24px;
+    box-shadow: 0 25px 55px -20px rgba(0,0,0,0.22);
     transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease;
   }
-  .gallery-grid img:hover {
-    transform: translateY(-8px) scale(1.015);
-    box-shadow: 0 30px 55px -20px rgba(0,0,0,0.3);
+  .gallery-track img:hover {
+    transform: translateY(-8px) scale(1.01);
+    box-shadow: 0 35px 65px -20px rgba(0,0,0,0.32);
+  }
+  .gallery-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1.75rem;
+  }
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: var(--line);
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: width 0.3s ease, background 0.3s ease;
+  }
+  .dot.active {
+    width: 26px;
+    background: var(--fg);
   }
 
   @media (max-width: 700px) {
-    .gallery-grid { grid-template-columns: 1fr; }
+    .gallery-track img { flex-basis: 88%; max-height: 60vh; }
   }
 
   /* Merch — editorial grande */
@@ -823,10 +852,17 @@
       <h2>Galería</h2>
       <span class="eyebrow">Editorial</span>
     </div>
-    <div class="gallery-grid">
-      <img src="/assets/og-image.jpg" alt="Andrés Galdino, Anndy — editorial" loading="lazy">
-      <img src="/assets/fotos-1.jpg" alt="Andrés Galdino, Anndy — editorial" loading="lazy">
-      <img src="/assets/fotos-2.jpg" alt="Andrés Galdino, Anndy — tocando guitarra" loading="lazy">
+    <div class="gallery-carousel">
+      <div class="gallery-track" id="galleryTrack">
+        <img src="/assets/og-image.jpg" alt="Andrés Galdino, Anndy — editorial" loading="lazy">
+        <img src="/assets/fotos-1.jpg" alt="Andrés Galdino, Anndy — editorial" loading="lazy">
+        <img src="/assets/fotos-2.jpg" alt="Andrés Galdino, Anndy — tocando guitarra" loading="lazy">
+      </div>
+      <div class="gallery-dots" id="galleryDots">
+        <button class="dot active" data-index="0" aria-label="Foto 1"></button>
+        <button class="dot" data-index="1" aria-label="Foto 2"></button>
+        <button class="dot" data-index="2" aria-label="Foto 3"></button>
+      </div>
     </div>
   </section>
 
@@ -868,5 +904,34 @@
   </div>
   <p class="footer-note">Andrés Galdino · Anndy · Colombia</p>
 </footer>
+<script>
+  (function () {
+    var track = document.getElementById('galleryTrack');
+    var dotsWrap = document.getElementById('galleryDots');
+    if (!track || !dotsWrap) return;
+    var images = track.querySelectorAll('img');
+    var dots = dotsWrap.querySelectorAll('.dot');
+
+    dots.forEach(function (dot) {
+      dot.addEventListener('click', function () {
+        var i = parseInt(dot.dataset.index, 10);
+        images[i].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+      });
+    });
+
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          var idx = Array.prototype.indexOf.call(images, entry.target);
+          dots.forEach(function (d, i) {
+            d.classList.toggle('active', i === idx);
+          });
+        }
+      });
+    }, { root: track, threshold: 0.6 });
+
+    images.forEach(function (img) { observer.observe(img); });
+  })();
+</script>
 </body>
 </html>
