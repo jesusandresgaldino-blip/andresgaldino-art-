@@ -140,82 +140,70 @@
   }
   .topbar nav a:hover { color: var(--fg); }
 
-  /* Hero */
-  .hero {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-    gap: 4rem;
-    max-width: 1040px;
-    margin: 0 auto;
-    padding: 4rem 2rem 6rem;
-  }
-  .hero-text .eyebrow {
-    display: block;
-    color: var(--muted);
-    letter-spacing: 0.15em;
-    font-size: 0.72rem;
-    margin-bottom: 1.5rem;
-  }
-  .hero-text h1 {
-    font-family: "Jost", sans-serif;
-    font-size: clamp(2rem, 5vw, 3.25rem);
-    line-height: 1.1;
-    font-weight: 200;
-    letter-spacing: 0.4em;
-    text-transform: uppercase;
-    margin: 0 0 1.5rem;
-    padding-left: 0.4em;
-  }
-  .hero-text .tagline {
-    color: var(--muted);
-    font-size: 0.95rem;
-    max-width: 32ch;
-    margin: 0 0 2.5rem;
-    font-weight: 300;
-  }
-  .cta-row { display: flex; gap: 2rem; flex-wrap: wrap; align-items: center; }
-  .btn-solid {
-    text-decoration: none;
-    color: var(--fg);
-    font-size: 0.72rem;
-    letter-spacing: 0.1em;
-    border-bottom: 1px solid var(--fg);
-    padding-bottom: 3px;
-  }
-  .btn-solid:hover { color: var(--accent); border-color: var(--accent); }
-  .btn-link {
-    text-decoration: none;
-    color: var(--muted);
-    font-size: 0.72rem;
-    letter-spacing: 0.1em;
-  }
-  .btn-link:hover { color: var(--fg); }
-  .hero-photo {
-    width: 100%;
-    aspect-ratio: 4/5;
-    object-fit: cover;
-    object-position: center 20%;
-  }
-
-  /* Feature strip */
-  .strip {
-    padding: 1.5rem 0;
-    border-top: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
-  }
-  .strip .wrap {
+  /* Hero — estilo Next.js starter */
+  .next-hero {
     display: flex;
-    flex-wrap: wrap;
-    gap: 2.5rem;
+    flex-direction: column;
+    min-height: 92vh;
+  }
+  .hero-topline {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 2.5rem;
+  }
+  .pill {
+    background: rgba(255,255,255,0.7);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 0.5rem 1rem;
+    font-size: 0.72rem;
+    color: var(--muted);
+  }
+  .credit {
+    font-size: 0.72rem;
+    color: var(--muted);
+  }
+  .credit strong { color: var(--fg); font-weight: 500; }
+  .hero-center {
+    flex: 1;
+    display: flex;
+    align-items: center;
     justify-content: center;
   }
-  .strip-item {
-    font-size: 0.68rem;
-    letter-spacing: 0.08em;
-    color: var(--muted);
+  .hero-center h1 {
+    font-family: "Jost", sans-serif;
+    font-size: clamp(2.5rem, 7vw, 4.5rem);
+    line-height: 1;
+    font-weight: 200;
+    letter-spacing: 0.45em;
+    text-transform: uppercase;
+    margin: 0;
+    padding-left: 0.45em;
   }
-  .strip-item strong { color: var(--fg); font-weight: 400; margin-right: 0.35rem; }
+  .hero-links {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    padding-bottom: 3rem;
+  }
+  .hero-links a {
+    text-decoration: none;
+    color: var(--fg);
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+  .hero-links a strong {
+    font-weight: 500;
+    font-size: 0.95rem;
+  }
+  .hero-links a span {
+    color: var(--muted);
+    font-size: 0.8rem;
+    font-weight: 300;
+  }
+  .hero-links a:hover strong { color: var(--accent); }
 
   main {
     max-width: 1040px;
@@ -304,8 +292,7 @@
 
   @media (max-width: 800px) {
     .topbar nav { display: none; }
-    .hero { grid-template-columns: 1fr; gap: 2.5rem; padding-top: 2rem; }
-    .hero-photo { order: -1; aspect-ratio: 4/5; }
+    .hero-links { grid-template-columns: 1fr 1fr; }
     .bio-block { grid-template-columns: 1fr; gap: 2rem; }
     section { padding: 4rem 0; }
   }
@@ -324,29 +311,21 @@
   </nav>
 </div>
 
-<section class="hero">
-  <div class="wrap" style="display:contents;">
-    <div class="hero-text">
-      <span class="eyebrow">Artista · Colombia</span>
-      <h1>ANNDY</h1>
-      <p class="tagline">Andrés Galdino — Modelaje · Música · Dirección audiovisual</p>
-      <div class="cta-row">
-        <a class="btn-solid" href="#musica">Ver música</a>
-        <a class="btn-link" href="#redes">Sígueme</a>
-      </div>
-    </div>
-    <img class="hero-photo" src="/assets/og-image.jpg" alt="Andrés Galdino, Anndy">
+<section class="next-hero">
+  <div class="hero-topline wrap">
+    <span class="pill">Andrés Galdino — Artista</span>
+    <span class="credit">Verificado en <strong>Spotify</strong></span>
+  </div>
+  <div class="hero-center">
+    <h1>ANNDY</h1>
+  </div>
+  <div class="hero-links wrap">
+    <a href="#musica"><strong>Música →</strong><span>Sencillos y proyectos desde 2021.</span></a>
+    <a href="#modelaje"><strong>Modelaje →</strong><span>Trabajo editorial y campañas.</span></a>
+    <a href="#videos"><strong>Videos →</strong><span>Dirección y producción audiovisual.</span></a>
+    <a href="#redes"><strong>Redes →</strong><span>Sígueme en todas las plataformas.</span></a>
   </div>
 </section>
-
-<div class="strip">
-  <div class="wrap">
-    <div class="strip-item"><strong>Spotify</strong>Artista verificado</div>
-    <div class="strip-item"><strong>Apple Music</strong>Artista verificado</div>
-    <div class="strip-item"><strong>YouTube</strong>Official Artist Channel</div>
-    <div class="strip-item"><strong>Bogotá</strong>Colombia</div>
-  </div>
-</div>
 
 <main>
   <section id="bio" class="bio-block">
