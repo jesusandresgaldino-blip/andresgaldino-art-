@@ -480,54 +480,39 @@
   .gallery-viewport {
     position: relative;
     overflow: visible;
-    max-width: calc(100% - 5rem);
-    margin: 0 auto;
   }
-  .gallery-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 2;
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    border: none;
-    background: rgba(255,255,255,0.85);
-    backdrop-filter: blur(6px);
-    box-shadow: 0 10px 25px -10px rgba(0,0,0,0.3);
+  .gallery-thumbs {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: background 0.2s ease, transform 0.2s ease;
+    gap: 0.6rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+    margin-top: 1.25rem;
+    padding-bottom: 0.25rem;
   }
-  .gallery-arrow:hover { background: #fff; transform: translateY(-50%) scale(1.08); }
-  .gallery-arrow svg { width: 18px; height: 18px; }
-  .gallery-arrow--prev { left: -3.25rem; }
-  .gallery-arrow--next { right: -3.25rem; }
-  @media (max-width: 700px) {
-    .gallery-arrow { display: none; }
-    .gallery-viewport { max-width: 100%; }
-  }
-  .gallery-dots {
-    display: flex;
-    justify-content: center;
-    gap: 0.5rem;
-    margin-top: 1.75rem;
-  }
-  .dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 999px;
-    background: var(--line);
-    border: none;
+  .gallery-thumbs::-webkit-scrollbar { display: none; }
+  .thumb {
+    flex: 0 0 56px;
+    height: 70px;
     padding: 0;
+    border: none;
+    border-radius: 10px;
+    overflow: hidden;
     cursor: pointer;
-    transition: width 0.3s ease, background 0.3s ease;
+    opacity: 0.45;
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+    transition: opacity 0.25s ease, outline-color 0.25s ease;
   }
-  .dot.active {
-    width: 26px;
-    background: var(--fg);
+  .thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 18%;
+    display: block;
+  }
+  .thumb.active {
+    opacity: 1;
+    outline-color: var(--fg);
   }
 
   @media (max-width: 700px) {
@@ -888,18 +873,14 @@
           <img src="/assets/og-image.jpg" alt="Andrés Galdino, Anndy — editorial" loading="lazy">
           <img src="/assets/fotos-1.jpg" alt="Andrés Galdino, Anndy — editorial" loading="lazy">
           <img src="/assets/fotos-2.jpg" alt="Andrés Galdino, Anndy — tocando guitarra" loading="lazy">
+          <img src="/assets/fotos-3.jpg" alt="Andrés Galdino, Anndy — con flores" loading="lazy">
         </div>
-        <button class="gallery-arrow gallery-arrow--prev" id="galleryPrev" aria-label="Foto anterior">
-          <svg viewBox="0 0 24 24" fill="none"><path d="M15 5L8 12L15 19" stroke="#111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
-        <button class="gallery-arrow gallery-arrow--next" id="galleryNext" aria-label="Foto siguiente">
-          <svg viewBox="0 0 24 24" fill="none"><path d="M9 5L16 12L9 19" stroke="#111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
       </div>
-      <div class="gallery-dots" id="galleryDots">
-        <button class="dot active" data-index="0" aria-label="Foto 1"></button>
-        <button class="dot" data-index="1" aria-label="Foto 2"></button>
-        <button class="dot" data-index="2" aria-label="Foto 3"></button>
+      <div class="gallery-thumbs" id="galleryThumbs">
+        <button class="thumb active" data-index="0" aria-label="Foto 1"><img src="/assets/og-image.jpg" alt=""></button>
+        <button class="thumb" data-index="1" aria-label="Foto 2"><img src="/assets/fotos-1.jpg" alt=""></button>
+        <button class="thumb" data-index="2" aria-label="Foto 3"><img src="/assets/fotos-2.jpg" alt=""></button>
+        <button class="thumb" data-index="3" aria-label="Foto 4"><img src="/assets/fotos-3.jpg" alt=""></button>
       </div>
     </div>
   </section>
@@ -945,37 +926,26 @@
 <script>
   (function () {
     var track = document.getElementById('galleryTrack');
-    var dotsWrap = document.getElementById('galleryDots');
-    var prevBtn = document.getElementById('galleryPrev');
-    var nextBtn = document.getElementById('galleryNext');
-    if (!track || !dotsWrap) return;
+    var thumbsWrap = document.getElementById('galleryThumbs');
+    if (!track || !thumbsWrap) return;
     var images = track.querySelectorAll('img');
-    var dots = dotsWrap.querySelectorAll('.dot');
-    var current = 0;
+    var thumbs = thumbsWrap.querySelectorAll('.thumb');
 
-    function goTo(i) {
-      if (i < 0) i = 0;
-      if (i > images.length - 1) i = images.length - 1;
-      images[i].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
-    }
-
-    dots.forEach(function (dot) {
-      dot.addEventListener('click', function () {
-        goTo(parseInt(dot.dataset.index, 10));
+    thumbs.forEach(function (thumb) {
+      thumb.addEventListener('click', function () {
+        var i = parseInt(thumb.dataset.index, 10);
+        images[i].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
       });
     });
-
-    if (prevBtn) prevBtn.addEventListener('click', function () { goTo(current - 1); });
-    if (nextBtn) nextBtn.addEventListener('click', function () { goTo(current + 1); });
 
     var observer = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
           var idx = Array.prototype.indexOf.call(images, entry.target);
-          current = idx;
-          dots.forEach(function (d, i) {
-            d.classList.toggle('active', i === idx);
+          thumbs.forEach(function (t, i) {
+            t.classList.toggle('active', i === idx);
           });
+          thumbs[idx].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
         }
       });
     }, { root: track, threshold: 0.6 });
