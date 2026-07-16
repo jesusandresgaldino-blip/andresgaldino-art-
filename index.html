@@ -457,6 +457,10 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
   }
+  .gallery-grid--single {
+    grid-template-columns: minmax(0, 420px);
+    justify-content: center;
+  }
   .gallery-grid img {
     width: 100%;
     aspect-ratio: 4/5;
@@ -807,8 +811,11 @@
   <section id="modelaje">
     <div class="section-head">
       <h2>Modelaje</h2>
+      <span class="eyebrow">Editorial</span>
     </div>
-    <p>Próximamente.</p>
+    <div class="gallery-grid gallery-grid--single">
+      <img src="/assets/modelaje-1.jpg" alt="Andrés Galdino, Anndy — editorial floral" loading="lazy">
+    </div>
   </section>
 
   <section id="videos">
