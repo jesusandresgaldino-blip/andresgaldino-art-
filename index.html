@@ -231,6 +231,38 @@
   }
   .hero-links a:hover strong { color: var(--accent); }
 
+  /* Logo loop — íconos de redes en marquesina infinita */
+  .logo-loop {
+    overflow: hidden;
+    width: 100%;
+    padding: 1.5rem 0 2.5rem;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  }
+  .logo-loop-track {
+    display: flex;
+    align-items: center;
+    width: max-content;
+    gap: 3.5rem;
+    animation: logo-loop-scroll 22s linear infinite;
+  }
+  .logo-loop-track img {
+    height: 20px;
+    width: auto;
+    display: block;
+    filter: brightness(0) saturate(100%);
+    opacity: 0.35;
+    transition: opacity 0.2s;
+  }
+  .logo-loop-track a:hover img { opacity: 0.85; }
+  @keyframes logo-loop-scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .logo-loop-track { animation: none; }
+  }
+
   main {
     max-width: 1040px;
     margin: 0 auto;
@@ -539,6 +571,27 @@
     <a href="#merch"><strong>Merch →</strong><span>Hoodies ANNDDY, próximamente.</span></a>
   </div>
 </section>
+
+<div class="logo-loop">
+  <div class="logo-loop-track">
+    <a href="https://www.instagram.com/andri_galdi" target="_blank" rel="noopener"><img src="/assets/icon/instagram.svg" alt="Instagram"></a>
+    <a href="https://www.tiktok.com/@andri_galdi" target="_blank" rel="noopener"><img src="/assets/icon/tiktok.svg" alt="TikTok"></a>
+    <a href="https://x.com/andri_galdi" target="_blank" rel="noopener"><img src="/assets/icon/x.svg" alt="X"></a>
+    <a href="https://www.facebook.com/jesusnunezgaldino" target="_blank" rel="noopener"><img src="/assets/icon/facebook.svg" alt="Facebook"></a>
+    <a href="https://www.youtube.com/channel/UCU5t0meCeM2xURNy9odK8dg" target="_blank" rel="noopener"><img src="/assets/icon/youtube.svg" alt="YouTube"></a>
+    <a href="https://open.spotify.com/artist/6PJUIPUt2Dj0fAjqf04Wns" target="_blank" rel="noopener"><img src="/assets/icon/spotify.svg" alt="Spotify"></a>
+    <a href="https://music.apple.com/co/artist/andr%C3%A9s-galdino/1584718639" target="_blank" rel="noopener"><img src="/assets/icon/apple-music.svg" alt="Apple Music"></a>
+    <a href="https://www.imdb.com/name/nm13046650/" target="_blank" rel="noopener"><img src="/assets/icon/imdb.svg" alt="IMDb"></a>
+    <a href="https://www.instagram.com/andri_galdi" target="_blank" rel="noopener" aria-hidden="true"><img src="/assets/icon/instagram.svg" alt=""></a>
+    <a href="https://www.tiktok.com/@andri_galdi" target="_blank" rel="noopener" aria-hidden="true"><img src="/assets/icon/tiktok.svg" alt=""></a>
+    <a href="https://x.com/andri_galdi" target="_blank" rel="noopener" aria-hidden="true"><img src="/assets/icon/x.svg" alt=""></a>
+    <a href="https://www.facebook.com/jesusnunezgaldino" target="_blank" rel="noopener" aria-hidden="true"><img src="/assets/icon/facebook.svg" alt=""></a>
+    <a href="https://www.youtube.com/channel/UCU5t0meCeM2xURNy9odK8dg" target="_blank" rel="noopener" aria-hidden="true"><img src="/assets/icon/youtube.svg" alt=""></a>
+    <a href="https://open.spotify.com/artist/6PJUIPUt2Dj0fAjqf04Wns" target="_blank" rel="noopener" aria-hidden="true"><img src="/assets/icon/spotify.svg" alt=""></a>
+    <a href="https://music.apple.com/co/artist/andr%C3%A9s-galdino/1584718639" target="_blank" rel="noopener" aria-hidden="true"><img src="/assets/icon/apple-music.svg" alt=""></a>
+    <a href="https://www.imdb.com/name/nm13046650/" target="_blank" rel="noopener" aria-hidden="true"><img src="/assets/icon/imdb.svg" alt=""></a>
+  </div>
+</div>
 
 <main>
   <section id="bio">
