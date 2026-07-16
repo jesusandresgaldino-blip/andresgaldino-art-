@@ -267,6 +267,52 @@
     box-shadow: 0 20px 45px -20px rgba(0,0,0,0.18);
   }
 
+  /* Merch — fusionado con el fondo */
+  .merch-stage {
+    position: relative;
+    min-height: 62vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .merch-word {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: "Jost", sans-serif;
+    font-weight: 200;
+    font-size: clamp(3.5rem, 14vw, 10rem);
+    letter-spacing: 0.05em;
+    color: rgba(17,17,17,0.05);
+    white-space: nowrap;
+    z-index: 0;
+    pointer-events: none;
+  }
+  .merch-img {
+    position: relative;
+    z-index: 1;
+    mix-blend-mode: multiply;
+    filter: drop-shadow(0 25px 35px rgba(0,0,0,0.12));
+  }
+  .merch-img--1 {
+    width: 42%;
+    max-width: 340px;
+    margin-right: -3%;
+    transform: rotate(-2deg);
+  }
+  .merch-img--2 {
+    width: 30%;
+    max-width: 250px;
+    margin-top: 8%;
+    transform: rotate(3deg);
+  }
+
+  @media (max-width: 700px) {
+    .merch-stage { min-height: 48vh; flex-direction: column; gap: 1.5rem; }
+    .merch-img--1, .merch-img--2 { width: 62%; max-width: 280px; margin: 0; transform: none; }
+  }
+
   /* Música */
   .mini-label {
     display: block;
@@ -493,11 +539,12 @@
   <section id="merch">
     <div class="section-head">
       <h2>Merch</h2>
-      <span class="eyebrow">ANNDDY</span>
+      <span class="eyebrow">Próximamente</span>
     </div>
-    <div class="photo-grid">
-      <img src="/assets/merch-1.jpg" alt="Hoodie ANNDDY blanco y negro" loading="lazy">
-      <img src="/assets/merch-2.jpg" alt="Hoodies ANNDDY en varios colores" loading="lazy">
+    <div class="merch-stage">
+      <span class="merch-word">ANNDDY</span>
+      <img class="merch-img merch-img--1" src="/assets/merch-1.jpg" alt="Hoodie ANNDDY blanco y negro" loading="lazy">
+      <img class="merch-img merch-img--2" src="/assets/merch-2.jpg" alt="Hoodies ANNDDY en varios colores" loading="lazy">
     </div>
   </section>
 
