@@ -710,7 +710,6 @@
       scrollbar-width: none;
       gap: 1rem;
       margin: 0 -2rem;
-      padding-left: 2rem;
       overscroll-behavior-x: contain;
     }
     .singles-grid::-webkit-scrollbar { display: none; }
@@ -718,6 +717,7 @@
       flex: 0 0 150px;
       scroll-snap-align: start;
     }
+    .single-item:first-child { margin-left: 2rem; }
     .single-item .cover-ph { width: 150px; height: 150px; aspect-ratio: 1/1; }
   }
 
