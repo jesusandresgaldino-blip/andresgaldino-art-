@@ -284,20 +284,6 @@
   .merch-visual--main {
     min-height: 640px;
   }
-  .merch-word {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-family: "Jost", sans-serif;
-    font-weight: 200;
-    font-size: clamp(4rem, 11vw, 8rem);
-    letter-spacing: 0.05em;
-    color: rgba(17,17,17,0.06);
-    white-space: nowrap;
-    z-index: 0;
-    pointer-events: none;
-  }
   .merch-img {
     position: relative;
     z-index: 1;
@@ -306,6 +292,7 @@
     width: auto;
     object-fit: contain;
     mix-blend-mode: multiply;
+    border-radius: 20px;
     filter: drop-shadow(0 30px 40px rgba(0,0,0,0.14));
   }
   .merch-copy { max-width: 34ch; }
@@ -548,7 +535,6 @@
 
     <div class="merch-editorial">
       <div class="merch-visual merch-visual--main">
-        <span class="merch-word">ANNDDY</span>
         <img class="merch-img" src="/assets/merch-1.jpg" alt="Hoodie ANNDDY blanco y negro" loading="lazy">
       </div>
       <div class="merch-copy">
