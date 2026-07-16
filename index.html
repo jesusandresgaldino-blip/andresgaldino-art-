@@ -1043,10 +1043,23 @@
   (function () {
     var topbar = document.querySelector('.topbar');
     if (!topbar) return;
-    function onScroll() {
-      topbar.classList.toggle('scrolled', window.scrollY > 40);
+    var ticking = false;
+    function update() {
+      var y = window.scrollY;
+      if (y > 60) {
+        topbar.classList.add('scrolled');
+      } else if (y < 20) {
+        topbar.classList.remove('scrolled');
+      }
+      ticking = false;
     }
-    onScroll();
+    function onScroll() {
+      if (!ticking) {
+        requestAnimationFrame(update);
+        ticking = true;
+      }
+    }
+    update();
     window.addEventListener('scroll', onScroll, { passive: true });
   })();
   (function () {
