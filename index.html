@@ -689,7 +689,7 @@
     .music-top { grid-template-columns: 1fr; gap: 2rem; margin-bottom: 2.5rem; }
     .track-list { grid-template-columns: 1fr; }
 
-    .latest-release a { display: flex; align-items: flex-start; gap: 1rem; }
+    .latest-release-row { display: flex; align-items: flex-start; gap: 1rem; }
     .latest-release .cover-ph {
       width: 110px;
       height: 110px;
@@ -698,7 +698,7 @@
       aspect-ratio: 1/1 !important;
     }
     .latest-release { max-width: none; }
-    .latest-info { justify-content: flex-start; gap: 0.4rem; }
+    .latest-info { justify-content: flex-start; gap: 0.4rem; padding-top: 0.25rem; }
     .latest-info strong { font-size: 1.1rem; }
 
     .singles-grid {
@@ -926,12 +926,14 @@
     <div class="music-top">
       <div class="latest-release">
         <span class="mini-label">Último lanzamiento</span>
-        <a href="https://music.apple.com/co/song/echo-garden/1850736313" target="_blank" rel="noopener">
-          <img class="cover-ph" src="/assets/music/echo-garden.jpg" alt="Echo Garden — portada" style="aspect-ratio:1/1;border-radius:14px;">
-        </a>
-        <div class="latest-info">
-          <strong>Echo Garden</strong>
-          <span>Single · 2025 · 1 canción</span>
+        <div class="latest-release-row">
+          <a href="https://music.apple.com/co/song/echo-garden/1850736313" target="_blank" rel="noopener">
+            <img class="cover-ph" src="/assets/music/echo-garden.jpg" alt="Echo Garden — portada" style="aspect-ratio:1/1;border-radius:14px;">
+          </a>
+          <div class="latest-info">
+            <strong>Echo Garden</strong>
+            <span>Single · 2025 · 1 canción</span>
+          </div>
         </div>
       </div>
 
