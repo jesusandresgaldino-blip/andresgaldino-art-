@@ -459,7 +459,7 @@
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
-    padding-bottom: 0.25rem;
+    padding: 0.75rem 2.75rem 2rem;
   }
   .gallery-track::-webkit-scrollbar { display: none; }
   .gallery-track img {
@@ -478,7 +478,7 @@
     transform: scale(1.01);
     box-shadow: 0 35px 65px -20px rgba(0,0,0,0.32);
   }
-  .gallery-carousel { position: relative; }
+  .gallery-viewport { position: relative; overflow: visible; }
   .gallery-arrow {
     position: absolute;
     top: 50%;
@@ -499,8 +499,8 @@
   }
   .gallery-arrow:hover { background: #fff; transform: translateY(-50%) scale(1.08); }
   .gallery-arrow svg { width: 18px; height: 18px; }
-  .gallery-arrow--prev { left: 0.75rem; }
-  .gallery-arrow--next { right: 0.75rem; }
+  .gallery-arrow--prev { left: 0.5rem; }
+  .gallery-arrow--next { right: 0.5rem; }
   @media (max-width: 700px) {
     .gallery-arrow { display: none; }
   }
@@ -878,17 +878,19 @@
       <span class="eyebrow">Editorial</span>
     </div>
     <div class="gallery-carousel">
-      <div class="gallery-track" id="galleryTrack">
-        <img src="/assets/og-image.jpg" alt="Andrés Galdino, Anndy — editorial" loading="lazy">
-        <img src="/assets/fotos-1.jpg" alt="Andrés Galdino, Anndy — editorial" loading="lazy">
-        <img src="/assets/fotos-2.jpg" alt="Andrés Galdino, Anndy — tocando guitarra" loading="lazy">
+      <div class="gallery-viewport">
+        <div class="gallery-track" id="galleryTrack">
+          <img src="/assets/og-image.jpg" alt="Andrés Galdino, Anndy — editorial" loading="lazy">
+          <img src="/assets/fotos-1.jpg" alt="Andrés Galdino, Anndy — editorial" loading="lazy">
+          <img src="/assets/fotos-2.jpg" alt="Andrés Galdino, Anndy — tocando guitarra" loading="lazy">
+        </div>
+        <button class="gallery-arrow gallery-arrow--prev" id="galleryPrev" aria-label="Foto anterior">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M15 5L8 12L15 19" stroke="#111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <button class="gallery-arrow gallery-arrow--next" id="galleryNext" aria-label="Foto siguiente">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M9 5L16 12L9 19" stroke="#111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
       </div>
-      <button class="gallery-arrow gallery-arrow--prev" id="galleryPrev" aria-label="Foto anterior">
-        <svg viewBox="0 0 24 24" fill="none"><path d="M15 5L8 12L15 19" stroke="#111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </button>
-      <button class="gallery-arrow gallery-arrow--next" id="galleryNext" aria-label="Foto siguiente">
-        <svg viewBox="0 0 24 24" fill="none"><path d="M9 5L16 12L9 19" stroke="#111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </button>
       <div class="gallery-dots" id="galleryDots">
         <button class="dot active" data-index="0" aria-label="Foto 1"></button>
         <button class="dot" data-index="1" aria-label="Foto 2"></button>
