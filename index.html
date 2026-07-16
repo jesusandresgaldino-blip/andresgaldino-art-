@@ -367,28 +367,10 @@
     .track-list { grid-template-columns: 1fr; }
   }
 
-  .social {
-    display: flex;
-    gap: 2rem;
-    flex-wrap: wrap;
-  }
-  .social a {
-    text-decoration: none;
-    color: var(--muted);
-    font-size: 0.78rem;
-    letter-spacing: 0.05em;
-    padding-bottom: 2px;
-    border-bottom: 1px solid transparent;
-  }
-  .social a:hover {
-    color: var(--fg);
-    border-color: var(--fg);
-  }
-
   footer {
-    background: #111111;
     padding: 3.5rem 2rem;
     text-align: center;
+    border-top: 1px solid var(--line);
   }
   .footer-icons {
     display: flex;
@@ -396,11 +378,17 @@
     gap: 1.75rem;
     margin-bottom: 2rem;
   }
-  .footer-icons img { width: 20px; height: 20px; opacity: 0.85; transition: opacity 0.15s; }
+  .footer-icons img {
+    width: 18px;
+    height: 18px;
+    filter: brightness(0) saturate(100%);
+    opacity: 0.55;
+    transition: opacity 0.15s;
+  }
   .footer-icons a:hover img { opacity: 1; }
   .footer-note {
     margin: 0;
-    color: rgba(255,255,255,0.55);
+    color: var(--muted);
     font-size: 0.68rem;
     letter-spacing: 0.08em;
   }
@@ -423,7 +411,6 @@
     <a href="#videos">Videos</a>
     <a href="#fotos">Fotos</a>
     <a href="#merch">Merch</a>
-    <a href="#redes">Redes</a>
   </nav>
 </div>
 
@@ -435,7 +422,7 @@
     <a href="#musica"><strong>Música →</strong><span>Sencillos y proyectos desde 2021.</span></a>
     <a href="#modelaje"><strong>Modelaje →</strong><span>Trabajo editorial y campañas.</span></a>
     <a href="#videos"><strong>Videos →</strong><span>Dirección y producción audiovisual.</span></a>
-    <a href="#redes"><strong>Redes →</strong><span>Sígueme en todas las plataformas.</span></a>
+    <a href="#merch"><strong>Merch →</strong><span>Hoodies ANNDDY, próximamente.</span></a>
   </div>
 </section>
 
@@ -548,20 +535,7 @@
     </div>
   </section>
 
-  <section id="redes">
-    <div class="section-head">
-      <h2>Redes</h2>
-    </div>
-    <div class="social">
-      <a href="https://www.instagram.com/andri_galdi" target="_blank" rel="noopener">Instagram</a>
-      <a href="https://open.spotify.com/artist/6PJUIPUt2Dj0fAjqf04Wns" target="_blank" rel="noopener">Spotify</a>
-      <a href="https://www.youtube.com/channel/UCU5t0meCeM2xURNy9odK8dg" target="_blank" rel="noopener">YouTube</a>
-      <a href="https://www.tiktok.com/@andri_galdi" target="_blank" rel="noopener">TikTok</a>
-      <a href="https://x.com/andri_galdi" target="_blank" rel="noopener">X</a>
-      <a href="https://music.apple.com/co/artist/andr%C3%A9s-galdino/1584718639" target="_blank" rel="noopener">Apple Music</a>
-      <a href="https://www.imdb.com/name/nm13046650/" target="_blank" rel="noopener">IMDb</a>
-    </div>
-  </section>
+
 </main>
 
 <footer>
@@ -572,6 +546,8 @@
     <a href="https://music.apple.com/co/artist/andr%C3%A9s-galdino/1584718639" target="_blank" rel="noopener" aria-label="Apple Music"><img src="/assets/icon/apple-music.svg" alt=""></a>
     <a href="https://open.spotify.com/artist/6PJUIPUt2Dj0fAjqf04Wns" target="_blank" rel="noopener" aria-label="Spotify"><img src="/assets/icon/spotify.svg" alt=""></a>
     <a href="https://www.tiktok.com/@andri_galdi" target="_blank" rel="noopener" aria-label="TikTok"><img src="/assets/icon/tiktok.svg" alt=""></a>
+    <a href="https://x.com/andri_galdi" target="_blank" rel="noopener" aria-label="X"><img src="/assets/icon/x.svg" alt=""></a>
+    <a href="https://www.imdb.com/name/nm13046650/" target="_blank" rel="noopener" aria-label="IMDb"><img src="/assets/icon/imdb.svg" alt=""></a>
   </div>
   <p class="footer-note">Andrés Galdino · Anndy · Colombia</p>
 </footer>
