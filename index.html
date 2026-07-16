@@ -340,12 +340,23 @@
   }
 
   footer {
-    padding: 3rem 2rem;
+    background: #111111;
+    padding: 3.5rem 2rem;
     text-align: center;
-    color: var(--muted);
+  }
+  .footer-icons {
+    display: flex;
+    justify-content: center;
+    gap: 1.75rem;
+    margin-bottom: 2rem;
+  }
+  .footer-icons img { width: 20px; height: 20px; opacity: 0.85; transition: opacity 0.15s; }
+  .footer-icons a:hover img { opacity: 1; }
+  .footer-note {
+    margin: 0;
+    color: rgba(255,255,255,0.55);
     font-size: 0.68rem;
     letter-spacing: 0.08em;
-    border-top: 1px solid var(--line);
   }
 
   @media (max-width: 800px) {
@@ -494,6 +505,16 @@
   </section>
 </main>
 
-<footer>Andrés Galdino · Anndy · Colombia</footer>
+<footer>
+  <div class="footer-icons">
+    <a href="https://www.facebook.com/jesusnunezgaldino" target="_blank" rel="noopener" aria-label="Facebook"><img src="/assets/icon/facebook.svg" alt=""></a>
+    <a href="https://www.instagram.com/andri_galdi" target="_blank" rel="noopener" aria-label="Instagram"><img src="/assets/icon/instagram.svg" alt=""></a>
+    <a href="https://www.youtube.com/channel/UCU5t0meCeM2xURNy9odK8dg" target="_blank" rel="noopener" aria-label="YouTube"><img src="/assets/icon/youtube.svg" alt=""></a>
+    <a href="https://music.apple.com/co/artist/andr%C3%A9s-galdino/1584718639" target="_blank" rel="noopener" aria-label="Apple Music"><img src="/assets/icon/apple-music.svg" alt=""></a>
+    <a href="https://open.spotify.com/artist/6PJUIPUt2Dj0fAjqf04Wns" target="_blank" rel="noopener" aria-label="Spotify"><img src="/assets/icon/spotify.svg" alt=""></a>
+    <a href="https://www.tiktok.com/@andri_galdi" target="_blank" rel="noopener" aria-label="TikTok"><img src="/assets/icon/tiktok.svg" alt=""></a>
+  </div>
+  <p class="footer-note">Andrés Galdino · Anndy · Colombia</p>
+</footer>
 </body>
 </html>
