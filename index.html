@@ -554,6 +554,7 @@
     gap: 3rem;
     margin-bottom: 3.5rem;
   }
+  .latest-release a { display: block; }
   .latest-release .cover-ph { width: 100%; margin-bottom: 1rem; }
   .latest-info { display: flex; flex-direction: column; gap: 0.2rem; }
   .latest-info strong { font-weight: 500; font-size: 0.95rem; }
@@ -561,11 +562,15 @@
 
   .track-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 0 2rem; }
   .track-list li {
+    padding: 0.7rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .track-list li a {
     display: flex;
     align-items: center;
     gap: 0.9rem;
-    padding: 0.7rem 0;
-    border-bottom: 1px solid var(--line);
+    text-decoration: none;
+    color: inherit;
   }
   .track-list .cover-ph { width: 44px; height: 44px; border-radius: 8px; flex-shrink: 0; }
   .track-list strong { display: block; font-weight: 400; font-size: 0.85rem; }
@@ -576,7 +581,7 @@
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     gap: 1.5rem;
   }
-  .single-item { display: flex; flex-direction: column; gap: 0.4rem; }
+  .single-item { display: flex; flex-direction: column; gap: 0.4rem; text-decoration: none; color: inherit; }
   .single-item .cover-ph { width: 100%; aspect-ratio: 1/1; margin-bottom: 0.3rem; }
   .single-item strong { font-weight: 400; font-size: 0.8rem; }
   .single-item span { color: var(--muted); font-size: 0.72rem; }
@@ -754,7 +759,9 @@
     <div class="music-top">
       <div class="latest-release">
         <span class="mini-label">Último lanzamiento</span>
-        <img class="cover-ph" src="/assets/music/echo-garden.jpg" alt="Echo Garden — portada" style="aspect-ratio:1/1;border-radius:14px;">
+        <a href="https://music.apple.com/co/song/echo-garden/1850736313" target="_blank" rel="noopener">
+          <img class="cover-ph" src="/assets/music/echo-garden.jpg" alt="Echo Garden — portada" style="aspect-ratio:1/1;border-radius:14px;">
+        </a>
         <div class="latest-info">
           <strong>Echo Garden</strong>
           <span>Single · 2025 · 1 canción</span>
@@ -764,12 +771,12 @@
       <div class="top-tracks">
         <span class="mini-label">Top canciones</span>
         <ul class="track-list">
-          <li><img class="cover-ph" src="/assets/music/echo-garden.jpg" alt="Echo Garden"><div><strong>Echo Garden</strong><span>Echo Garden · Single · 2025</span></div></li>
-          <li><img class="cover-ph" src="/assets/music/pulso-nocturno.jpg" alt="Pulso Nocturno"><div><strong>Pulso Nocturno</strong><span>Pulso Nocturno · Single · 2025</span></div></li>
-          <li><img class="cover-ph" src="/assets/music/ethernall.jpg" alt="Ethernall"><div><strong>Modern Stellar</strong><span>Ethernall · Single · 2023</span></div></li>
-          <li><img class="cover-ph" src="/assets/music/ethernall.jpg" alt="Ethernall"><div><strong>On Earth</strong><span>Ethernall · Single · 2023</span></div></li>
-          <li><img class="cover-ph" src="/assets/music/your-space.jpg" alt="Your Space"><div><strong>Your Space</strong><span>Your Space · Single · 2021</span></div></li>
-          <li><img class="cover-ph" src="/assets/music/comienzos.jpg" alt="Comienzos"><div><strong>Comienzos</strong><span>Comienzos · Single · 2021</span></div></li>
+          <li><a href="https://music.apple.com/co/song/echo-garden/1850736313" target="_blank" rel="noopener"><img class="cover-ph" src="/assets/music/echo-garden.jpg" alt="Echo Garden"><div><strong>Echo Garden</strong><span>Echo Garden · Single · 2025</span></div></a></li>
+          <li><a href="https://music.apple.com/co/song/pulso-nocturno/1814089301" target="_blank" rel="noopener"><img class="cover-ph" src="/assets/music/pulso-nocturno.jpg" alt="Pulso Nocturno"><div><strong>Pulso Nocturno</strong><span>Pulso Nocturno · Single · 2025</span></div></a></li>
+          <li><a href="https://music.apple.com/co/song/modern-stellar/1668397199" target="_blank" rel="noopener"><img class="cover-ph" src="/assets/music/ethernall.jpg" alt="Ethernall"><div><strong>Modern Stellar</strong><span>Ethernall · Single · 2023</span></div></a></li>
+          <li><a href="https://music.apple.com/co/song/on-earth/1668397198" target="_blank" rel="noopener"><img class="cover-ph" src="/assets/music/ethernall.jpg" alt="Ethernall"><div><strong>On Earth</strong><span>Ethernall · Single · 2023</span></div></a></li>
+          <li><a href="https://music.apple.com/co/song/your-space/1584718906" target="_blank" rel="noopener"><img class="cover-ph" src="/assets/music/your-space.jpg" alt="Your Space"><div><strong>Your Space</strong><span>Your Space · Single · 2021</span></div></a></li>
+          <li><a href="https://music.apple.com/co/song/comienzos/1574224130" target="_blank" rel="noopener"><img class="cover-ph" src="/assets/music/comienzos.jpg" alt="Comienzos"><div><strong>Comienzos</strong><span>Comienzos · Single · 2021</span></div></a></li>
         </ul>
       </div>
     </div>
@@ -777,31 +784,31 @@
     <div class="singles-block">
       <span class="mini-label">Sencillos y EP</span>
       <div class="singles-grid">
-        <div class="single-item">
+        <a class="single-item" href="https://music.apple.com/co/song/echo-garden/1850736313" target="_blank" rel="noopener">
           <img class="cover-ph" src="/assets/music/echo-garden.jpg" alt="Echo Garden — Single">
           <strong>Echo Garden — Single</strong>
           <span>2025</span>
-        </div>
-        <div class="single-item">
+        </a>
+        <a class="single-item" href="https://music.apple.com/co/song/pulso-nocturno/1814089301" target="_blank" rel="noopener">
           <img class="cover-ph" src="/assets/music/pulso-nocturno.jpg" alt="Pulso Nocturno — Single">
           <strong>Pulso Nocturno — Single</strong>
           <span>2025</span>
-        </div>
-        <div class="single-item">
+        </a>
+        <a class="single-item" href="https://music.apple.com/co/song/modern-stellar/1668397199" target="_blank" rel="noopener">
           <img class="cover-ph" src="/assets/music/ethernall.jpg" alt="Ethernall — Single">
           <strong>Ethernall — Single</strong>
           <span>2023</span>
-        </div>
-        <div class="single-item">
+        </a>
+        <a class="single-item" href="https://music.apple.com/co/song/your-space/1584718906" target="_blank" rel="noopener">
           <img class="cover-ph" src="/assets/music/your-space.jpg" alt="Your Space — Single">
           <strong>Your Space — Single</strong>
           <span>2021</span>
-        </div>
-        <div class="single-item">
+        </a>
+        <a class="single-item" href="https://music.apple.com/co/song/comienzos/1574224130" target="_blank" rel="noopener">
           <img class="cover-ph" src="/assets/music/comienzos.jpg" alt="Comienzos — Single">
           <strong>Comienzos — Single</strong>
           <span>2021</span>
-        </div>
+        </a>
       </div>
     </div>
   </section>
