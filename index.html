@@ -76,107 +76,310 @@
 </script>
 <style>
   :root {
-    color-scheme: light dark;
-    --bg: #0b0b0c;
-    --fg: #f4f4f4;
-    --muted: #9a9a9a;
+    color-scheme: dark;
+    --bg: #0a0a0a;
+    --bg-alt: #111111;
+    --fg: #f5f5f3;
+    --muted: #9a9a94;
     --accent: #e0c088;
+    --line: rgba(245,245,243,0.12);
   }
   * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
   body {
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
     background: var(--bg);
     color: var(--fg);
     line-height: 1.6;
   }
-  header {
-    padding: 6rem 1.5rem 3rem;
-    text-align: center;
+  a { color: inherit; }
+  .wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
   }
-  header h1 {
-    font-size: clamp(2rem, 6vw, 3.5rem);
-    margin: 0 0 0.5rem;
-    letter-spacing: -0.02em;
+
+  /* Topbar */
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 1.5rem;
+    background: rgba(10,10,10,0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
   }
-  header p {
-    color: var(--muted);
+  .topbar .brand {
+    font-weight: 800;
+    letter-spacing: 0.02em;
     font-size: 1.1rem;
-    margin: 0;
   }
-  header img {
-    width: 190px;
-    height: 190px;
-    border-radius: 24px;
+  .topbar nav {
+    display: flex;
+    gap: 1.75rem;
+    flex-wrap: wrap;
+  }
+  .topbar nav a {
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .topbar nav a:hover { color: var(--accent); }
+
+  /* Hero */
+  .hero {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    align-items: center;
+    gap: 2rem;
+    padding: 3rem 0 4rem;
+  }
+  .hero-text .eyebrow {
+    display: block;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-size: 0.75rem;
+    margin-bottom: 1rem;
+  }
+  .hero-text h1 {
+    font-size: clamp(4rem, 13vw, 9rem);
+    line-height: 0.85;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin: 0 0 1.25rem;
+  }
+  .hero-text .tagline {
+    color: var(--muted);
+    font-size: 1.05rem;
+    max-width: 30ch;
+    margin: 0 0 2rem;
+  }
+  .cta-row { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
+  .btn-solid {
+    background: var(--fg);
+    color: #0a0a0a;
+    text-decoration: none;
+    padding: 0.85rem 1.75rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  .btn-solid:hover { background: var(--accent); }
+  .btn-link {
+    text-decoration: none;
+    color: var(--fg);
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--fg);
+    padding-bottom: 2px;
+  }
+  .hero-photo {
+    width: 100%;
+    aspect-ratio: 4/5;
     object-fit: cover;
-    margin-bottom: 1.5rem;
-    border: 2px solid rgba(255,255,255,0.15);
+    filter: grayscale(1) contrast(1.05);
   }
+
+  /* Feature strip */
+  .strip {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: space-between;
+    padding: 1.75rem 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    background: var(--bg-alt);
+  }
+  .strip .wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: space-between;
+    width: 100%;
+  }
+  .strip-item {
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .strip-item strong { color: var(--fg); display: block; font-size: 0.85rem; margin-bottom: 0.15rem; letter-spacing: 0.02em; }
+
   main {
-    max-width: 720px;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 0 1.5rem 6rem;
   }
   section {
-    padding: 3rem 0;
-    border-top: 1px solid rgba(255,255,255,0.08);
+    padding: 5rem 0;
+    border-top: 1px solid var(--line);
+  }
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 2rem;
   }
   section h2 {
-    font-size: 1.5rem;
-    margin: 0 0 1rem;
+    font-size: clamp(2rem, 5vw, 3.25rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin: 0;
+    text-transform: uppercase;
+  }
+  .section-head .eyebrow {
     color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-size: 0.75rem;
   }
   section p {
     color: var(--muted);
+    max-width: 65ch;
+    font-size: 1.05rem;
   }
+
+  .bio-block {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: 3rem;
+    align-items: center;
+  }
+  .bio-block img {
+    width: 100%;
+    aspect-ratio: 4/5;
+    object-fit: cover;
+    filter: grayscale(1);
+  }
+
   .social {
     display: flex;
-    gap: 1.25rem;
+    gap: 1rem;
     flex-wrap: wrap;
   }
   .social a {
-    color: var(--fg);
     text-decoration: none;
-    border: 1px solid rgba(255,255,255,0.15);
-    padding: 0.5rem 1rem;
-    border-radius: 999px;
-    font-size: 0.9rem;
+    border: 1px solid var(--line);
+    padding: 0.7rem 1.4rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
   }
   .social a:hover {
     border-color: var(--accent);
     color: var(--accent);
   }
+
+  footer {
+    padding: 2.5rem 1.5rem;
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-top: 1px solid var(--line);
+  }
+
+  @media (max-width: 800px) {
+    .topbar nav { display: none; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-photo { order: -1; aspect-ratio: 4/3; }
+    .bio-block { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>
-<header>
-  <img src="/assets/avatar.jpg" alt="Andrés Galdino" width="190" height="190">
-  <h1>Andrés Galdino</h1>
-  <p>Artista · Modelaje · Música · Dirección</p>
-</header>
+<div class="topbar">
+  <div class="brand">ANNDY</div>
+  <nav>
+    <a href="#bio">Bio</a>
+    <a href="#musica">Música</a>
+    <a href="#modelaje">Modelaje</a>
+    <a href="#videos">Videos</a>
+    <a href="#fotos">Fotos</a>
+    <a href="#redes">Redes</a>
+  </nav>
+</div>
+
+<section class="hero">
+  <div class="wrap" style="display:contents;">
+    <div class="hero-text">
+      <span class="eyebrow">Artista · Colombia</span>
+      <h1>ANNDY</h1>
+      <p class="tagline">Andrés Galdino — Modelaje · Música · Dirección audiovisual</p>
+      <div class="cta-row">
+        <a class="btn-solid" href="#musica">Ver música</a>
+        <a class="btn-link" href="#redes">Sígueme</a>
+      </div>
+    </div>
+    <img class="hero-photo" src="/assets/og-image.jpg" alt="Andrés Galdino, Anndy">
+  </div>
+</section>
+
+<div class="strip">
+  <div class="wrap">
+    <div class="strip-item"><strong>Spotify</strong>Artista verificado</div>
+    <div class="strip-item"><strong>Apple Music</strong>Artista verificado</div>
+    <div class="strip-item"><strong>YouTube</strong>Official Artist Channel</div>
+    <div class="strip-item"><strong>Bogotá</strong>Colombia</div>
+  </div>
+</div>
+
 <main>
-  <section id="bio">
-    <h2>Biografía</h2>
-    <p>Andrés Galdino es un artista colombiano multidisciplinario que se mueve entre la música, el modelaje y la dirección audiovisual. Comenzó su carrera musical en 2021, lanzando sencillos como <em>Modern Stellar</em> y <em>Ethernall</em>, y ha sido reconocido como artista verificado en Spotify, Apple Music y YouTube. Como director y actor, creó <em>Femboy Cambio Extremo</em> (2021). Su trabajo se mueve entre estéticas contemporáneas y una identidad visual propia, con presencia activa en redes sociales donde comparte tanto su arte como su vida.</p>
+  <section id="bio" class="bio-block">
+    <img src="/assets/avatar.jpg" alt="Andrés Galdino">
+    <div>
+      <div class="section-head" style="display:block;">
+        <span class="eyebrow">Sobre mí</span>
+        <h2>Biografía</h2>
+      </div>
+      <p>Andrés Galdino es un artista colombiano multidisciplinario que se mueve entre la música, el modelaje y la dirección audiovisual. Comenzó su carrera musical en 2021, lanzando sencillos como <em>Modern Stellar</em> y <em>Ethernall</em>, y ha sido reconocido como artista verificado en Spotify, Apple Music y YouTube. Como director y actor, creó <em>Femboy Cambio Extremo</em> (2021). Su trabajo se mueve entre estéticas contemporáneas y una identidad visual propia, con presencia activa en redes sociales donde comparte tanto su arte como su vida.</p>
+    </div>
   </section>
+
   <section id="musica">
-    <h2>Música</h2>
+    <div class="section-head">
+      <h2>Música</h2>
+      <span class="eyebrow">2021 — hoy</span>
+    </div>
     <p>Próximamente.</p>
   </section>
+
   <section id="modelaje">
-    <h2>Modelaje</h2>
+    <div class="section-head">
+      <h2>Modelaje</h2>
+    </div>
     <p>Próximamente.</p>
   </section>
+
   <section id="videos">
-    <h2>Videos</h2>
+    <div class="section-head">
+      <h2>Videos</h2>
+    </div>
     <p>Próximamente.</p>
   </section>
+
   <section id="fotos">
-    <h2>Fotos</h2>
+    <div class="section-head">
+      <h2>Fotos</h2>
+    </div>
     <p>Próximamente.</p>
   </section>
+
   <section id="redes">
-    <h2>Redes</h2>
+    <div class="section-head">
+      <h2>Redes</h2>
+    </div>
     <div class="social">
       <a href="https://www.instagram.com/andri_galdi" target="_blank" rel="noopener">Instagram</a>
       <a href="https://open.spotify.com/artist/6PJUIPUt2Dj0fAjqf04Wns" target="_blank" rel="noopener">Spotify</a>
@@ -188,5 +391,7 @@
     </div>
   </section>
 </main>
+
+<footer>Andrés Galdino · Anndy · Colombia</footer>
 </body>
 </html>
